@@ -185,9 +185,11 @@ module Etsy
     end
 
     def update_variations(options)
-      options[:variations] = JSON.dump(options.delete(:variations))
+      # options[:variations] = JSON.dump(options.delete(:variations))
+      options[:products] = JSON.dump(options.delete(:products))
       options[:require_secure] = true
-      self.class.put("/listings/#{id}/variations", options)
+      # self.class.put("/listings/#{id}/variations", options)
+      self.class.put("/listings/#{id}/inventory", options)
     end
 
     def black_and_white?
