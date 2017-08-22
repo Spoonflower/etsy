@@ -36,6 +36,8 @@ module Etsy
         @all ||= get("/property_sets")
       end
 
+      # in the hash that comes back from Etsy::Request.get("/property_sets").result
+      # get Etsy::Request.get("/property_sets").result["properties"].find {|prop_id, prop| prop["name"] == name}
       def self.find_property_by_name(name)
         property = all.properties.detect {|prop_id, prop| prop["name"] == name}
         if property

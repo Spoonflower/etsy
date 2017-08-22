@@ -178,13 +178,10 @@ module Etsy
     #    ],
     #    scale.fetch("param") => scale.fetch("options").fetch("Inches")
     #  )
-    def add_variations(options)
-      options[:variations] = JSON.dump(options.delete(:variations))
-      options[:require_secure] = true
-      self.class.post("/listings/#{id}/variations", options)
-    end
 
-    # NOTE: updated to v2 endpoints!
+    # NOTE: removed add_variations, as there is no comparable endpoint in v2
+    
+    # NOTE: updated to v2 endpoints:
     def update_variations(options)
       options[:require_secure] = true
       self.class.put("/listings/#{id}/inventory", options)
