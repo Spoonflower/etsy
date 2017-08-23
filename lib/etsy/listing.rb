@@ -142,9 +142,11 @@ module Etsy
       @category ||= Category.find(path)
     end
 
+    # this is roughly the same info as was returned by the deprecated /listings/#{id}/variations
+    # endpoint. Might require some tweaking to avoid breaking changes
     def variations(options={})
       options.merge!(:require_secure => true)
-      self.class.get_all("/listings/#{id}/variations", oauth.merge(options))
+      self.class.get_all("/listings/#{id}/inventory",oauth.merge(options))
     end
 
     # If these are your desired variations:
